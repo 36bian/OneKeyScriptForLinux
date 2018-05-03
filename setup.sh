@@ -22,6 +22,7 @@ function autosetup(){
   echo -e "\033[36m 安装 kcptun（441转成8379）        按 3 \033[0m"
   echo -e "\033[36m 安装 ShadowSocksR                 按 4 \033[0m"
   echo -e "\033[36m 安装 v2Ray                        按 5 \033[0m"
+  echo -e "\033[36m 设置 定时签到文本                 按 6 \033[0m"
   echo -e "\033[36m 退出请按其他键                          \033[0m"
   echo -e "\033[36m ##################################### \033[0m"
   echo -n "请输入数字:"
@@ -63,6 +64,10 @@ function autosetup(){
     service haproxy-lkl restart
     service v2ray restart
     ;;
+    6)  echo '设置189签到定时脚本'
+    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/189qiandao.sh
+    echo "bash /root/189qiandao.sh" >> /etc/crontab
+	;;
     # 其他键则执行
     *)  echo '退出并清除自身文件'
     rm $0
