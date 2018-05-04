@@ -66,7 +66,7 @@ function autosetup(){
     ;;
     6)  echo '设置189签到定时脚本'
     wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/189qiandao.sh
-    echo "bash /root/189qiandao.sh" >> /etc/crontab
+    echo "0 12 * * * bash /root/189qiandao.sh" >> /etc/crontab
 	;;
     # 其他键则执行
     *)  echo '退出并清除自身文件'
