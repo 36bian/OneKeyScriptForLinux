@@ -37,7 +37,7 @@ function autosetup(){
   case $aNum in
     1)  echo '安装ShadowSocks...'
     rm -f ss-server.sh
-    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/ss-server.sh
+    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/ss/ss-server.sh
     chmod +x ss-server.sh &&  ./ss-server.sh
     ;;
     2)  echo '安装BBR for OpenVZ...'
@@ -46,18 +46,18 @@ function autosetup(){
     ;;
     3)  echo '安装Kcptun...'
     rm -f kcptun.sh
-    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/kcptun.sh
+    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/kcptun/kcptun.sh
     chmod +x kcptun.sh &&  ./kcptun.sh
     ;;
     4)  echo '安装SSR...'
     rm -f ssr-server.sh
-    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/ssr-server.sh
+    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/ssr/ssr-server.sh
     chmod +x ssr-server.sh &&  ./ssr-server.sh
     ;;
     5)  echo '安装V2ray...'
     rm -f go.sh
     bash <(curl -L -s https://install.direct/go.sh)
-    wget https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/config.json -O config.json
+    wget https://github.com/36bian/OneKeyScriptForLinux/raw/master/v2ray/config.json -O config.json
     mv -f config.json /etc/v2ray/
     # 开启bbr支持
     echo 80 >> /usr/local/haproxy-lkl/etc/port-rules
@@ -65,7 +65,7 @@ function autosetup(){
     service v2ray restart
     ;;
     6)  echo '设置189签到定时脚本'
-    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/lib/189qiandao.sh
+    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/189qiandao/189qiandao.sh
     echo "0 12 * * * bash /root/189qiandao.sh" >> /etc/crontab
     crontab /etc/crontab
 	;;
