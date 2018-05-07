@@ -1,7 +1,7 @@
-#/bin/bash
+#!/bin/bash
 
 # 如果是每月的前5天
-if [ `date +"%d"` -lt 6 ]  
+if [ `date +"%d"` -lt 10 ]  
 then  
     # 获取cookies
     curl http://wapbj.189.cn/wap2017/re/sign/signQry\?pno\=33Jrsfu1wD8JIG9wW1kUjQ%3D%3D\&uim_no\=1\&imei\=null\&activ_id\=1019\&_\=1523033123747 -c cookie.189.cn --output /dev/null
