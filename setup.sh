@@ -68,6 +68,8 @@ function autosetup(){
     wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/189qiandao/189qiandao.sh
     echo "0 12 * * * bash /root/189qiandao.sh" >> /etc/crontab
     crontab /etc/crontab
+    # 启动crontab服务
+    service crond start
 	;;
     # 其他键则执行
     *)  echo '退出并清除自身文件'
