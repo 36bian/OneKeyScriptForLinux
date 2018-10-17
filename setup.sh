@@ -54,7 +54,7 @@ function autosetup(){
     wget https://github.com/36bian/OneKeyScriptForLinux/raw/master/v2ray/config.json -O config.json
     mv -f config.json /etc/v2ray/
     # 开启bbr支持
-    echo 80 >> /usr/local/haproxy-lkl/etc/port-rules
+    echo 440 >> /usr/local/haproxy-lkl/etc/port-rules
     service haproxy-lkl restart
     service v2ray restart
     ;;
