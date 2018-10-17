@@ -20,9 +20,8 @@ function autosetup(){
   echo -e "\033[36m 安装 ShadowSocks 2.8.3            按 1 \033[0m"
   echo -e "\033[36m 安装 BBR ForOpenVZ（推荐加速442） 按 2 \033[0m"
   echo -e "\033[36m 安装 kcptun（441转成8379）        按 3 \033[0m"
-  echo -e "\033[36m 安装 ShadowSocksR                 按 4 \033[0m"
-  echo -e "\033[36m 安装 v2Ray                        按 5 \033[0m"
-  echo -e "\033[36m 设置 定时签到文本                 按 6 \033[0m"
+  echo -e "\033[36m 安装 v2Ray(端口440)                     按 4 \033[0m"
+  echo -e "\033[36m 设置 定时签到文本                 按 5 \033[0m"
   echo -e "\033[36m 退出请按其他键                          \033[0m"
   echo -e "\033[36m ##################################### \033[0m"
   echo -n "请输入数字:"
@@ -49,12 +48,7 @@ function autosetup(){
     wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/kcptun/kcptun.sh
     chmod +x kcptun.sh &&  ./kcptun.sh
     ;;
-    4)  echo '安装SSR...'
-    rm -f ssr-server.sh
-    wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/ssr/ssr-server.sh
-    chmod +x ssr-server.sh &&  ./ssr-server.sh
-    ;;
-    5)  echo '安装V2ray...'
+    4)  echo '安装V2ray...'
     rm -f go.sh
     bash <(curl -L -s https://install.direct/go.sh)
     wget https://github.com/36bian/OneKeyScriptForLinux/raw/master/v2ray/config.json -O config.json
@@ -64,7 +58,7 @@ function autosetup(){
     service haproxy-lkl restart
     service v2ray restart
     ;;
-    6)  echo '设置189签到定时脚本'
+    5)  echo '设置189签到定时脚本'
     wget -N https://github.com/36bian/OneKeyScriptForLinux/raw/master/189qiandao/189qiandao.sh
     echo "0 12 * * * bash /root/189qiandao.sh" >> /etc/crontab
     crontab /etc/crontab
