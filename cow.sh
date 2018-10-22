@@ -56,8 +56,8 @@ while true; do
     echo -n "Install cow binary to which directory (absolute path, defaults to current dir): "
     read install_dir </dev/tty
     if [ -z $install_dir ]; then
-        echo "No installation directory given, assuming current directory"
-        install_dir=`pwd`
+        echo "No installation directory given, assuming Home directory"
+        install_dir=/users/`whoami`
         break
     fi
     if [ ! -d $install_dir ]; then
@@ -85,18 +85,15 @@ if [ $os == "mac" ]; then
         esac
     done
 fi
+echo $install_dir
+pause
 
 # Download COW binary
-bin=cow-$os$arch-$version
-tmpdir=`mktemp -d /tmp/cow.XXXXXX`
-tmpbin=$tmpdir/cow
 binary_url="https://github.com/OMGZui/go/raw/master/cow.zip" # 修改下载地址
-echo "Downloading cow binary $binary_url to $tmpbin.gz"
-curl -L "$binary_url" -o $tmpbin.zip || \
+curl -L "$binary_url" -o ${install_dir}/cow.zip || \
     exit_on_fail "Downloading cow binary failed"
-gunzip $tmpbin.zip || exit_on_fail "gunzip $tmpbin.zip failed"
-chmod +x $tmpbin ||
-    exit_on_fail "Can't chmod for $tmpbin"
+unzip -o ${install_dir}/cow.zip -d ${install_dir}/ || exit_on_fail "unzip $tmpbin.zip failed"
+rm ${install_dir}/cow.zip
 
 # Download sample config file if no configuration directory present
 doc_base="https://raw.github.com/cyfdecyf/cow/$version/doc"
@@ -125,16 +122,6 @@ if [ $start_on_login == "y" ]; then
         sed -e "s,COWBINARY,$install_dir/cow," > $la_dir/$plist || \
         exit_on_fail "Download startup plist file to $la_dir failed"
 fi
-
-# Move binary to install directory
-echo "Move $tmpbin to $install_dir (will run sudo if no write permission to install directory)"
-if [ -w $install_dir ]; then
-    mv $tmpbin $install_dir
-else
-    sudo mv $tmpbin $install_dir
-fi
-exit_on_fail "Failed to move $tmpbin to $install_dir"
-rmdir $tmpdir
 
 # 配置rc
 echo "正在配置代理地址，请输入主机ip："
