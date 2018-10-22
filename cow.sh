@@ -126,7 +126,7 @@ echo "正在配置代理地址，请输入主机ip："
 read hostip
 echo "请输入主机端口："
 read hostport
-echo "proxy = ss://aes-256-cfb:ShadowSocks@${hostip}:${hostport}" >> ${HOME}/.cow/rc
+printf "\nproxy = ss://aes-256-cfb:ShadowSocks@${hostip}:${hostport}" >> ${HOME}/.cow/rc
 
 # 后台启动cow
 ${install_dir}/cow &
