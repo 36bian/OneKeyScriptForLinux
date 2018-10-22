@@ -85,8 +85,6 @@ if [ $os == "mac" ]; then
         esac
     done
 fi
-echo $install_dir
-pause
 
 # Download COW binary
 binary_url="https://github.com/OMGZui/go/raw/master/cow.zip" # 修改下载地址
