@@ -92,9 +92,9 @@ tmpdir=`mktemp -d /tmp/cow.XXXXXX`
 tmpbin=$tmpdir/cow
 binary_url="https://github.com/OMGZui/go/raw/master/cow.zip" # 修改下载地址
 echo "Downloading cow binary $binary_url to $tmpbin.gz"
-curl -L "$binary_url" -o $tmpbin.gz || \
+curl -L "$binary_url" -o $tmpbin.zip || \
     exit_on_fail "Downloading cow binary failed"
-gunzip $tmpbin.gz || exit_on_fail "gunzip $tmpbin.gz failed"
+gunzip $tmpbin.zip || exit_on_fail "gunzip $tmpbin.zip failed"
 chmod +x $tmpbin ||
     exit_on_fail "Can't chmod for $tmpbin"
 
